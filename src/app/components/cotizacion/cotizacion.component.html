@@ -1,0 +1,425 @@
+<div class="bg-gray-100 flex flex-col items-center min-h-screen p-4">
+  <div class="bg-white shadow-lg rounded-lg w-full max-w-2xl p-6 overflow-auto">
+    <h1 class="text-2xl font-bold text-center text-gray-800 mb-4">
+      Crear Cotización
+    </h1>
+
+    <!-- Botones de Acción -->
+    <div class="border-b mb-4">
+      <div class="flex justify-between mb-6">
+        <button
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full"
+        >
+          Guardar
+        </button>
+        <button
+          class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+
+    <!-- Datos del Proyecto -->
+    <div class="border-b mb-4 border-gray-900/10 pb-12">
+      <div class="space-y-12">
+        <div class="border-gray-900/10 pb-12">
+          <h2 class="text-base font-semibold leading-7 text-gray-900">
+            Datos del Proyecto
+          </h2>
+          <p class="mt-1 text-sm leading-6 text-gray-600"></p>
+
+          <form class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div class="sm:col-span-4">
+              <label
+                for="nombreProyecto"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Nombre del Proyecto</label
+              >
+              <div class="mt-2">
+                <input
+                  id="nombreProyecto"
+                  type="text"
+                  [value]="nombreProyecto()"
+                  (input)="updateField('nombreProyecto', $event)"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="Nombre del proyecto"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-4">
+              <label
+                for="ubicacion"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Ubicación</label
+              >
+              <div class="mt-2">
+                <input
+                  id="ubicacion"
+                  type="text"
+                  [value]="ubicacion()"
+                  (input)="updateField('ubicacion', $event)"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="Ubicación del proyecto"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label
+                for="fechaInicio"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Fecha de Inicio</label
+              >
+              <div class="mt-2">
+                <input
+                  id="fechaInicio"
+                  type="date"
+                  [value]="fechaInicio()"
+                  (input)="updateField('fechaInicio', $event)"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label
+                for="fechaFin"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Fecha de Fin Estimada</label
+              >
+              <div class="mt-2">
+                <input
+                  id="fechaFin"
+                  type="date"
+                  [value]="fechaFin()"
+                  (input)="updateField('fechaFin', $event)"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div class="col-span-full">
+              <label
+                for="descripcion"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Descripción del Proyecto</label
+              >
+              <div class="mt-2">
+                <textarea
+                  id="descripcion"
+                  rows="3"
+                  [value]="descripcion()"
+                  (input)="updateField('descripcion', $event)"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="Descripción breve del trabajo a realizar"
+                ></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Datos del Cliente -->
+    <div class="border-b mb-4 border-gray-900/10 pb-12">
+      <div class="space-y-12">
+        <div class="border-gray-900/10 pb-12">
+          <h2 class="text-base font-semibold leading-7 text-gray-900">
+            Datos del Cliente
+          </h2>
+          <p class="mt-1 text-sm leading-6 text-gray-600"></p>
+
+          <form class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div class="sm:col-span-6">
+              <label
+                for="nombreCliente"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Nombre del Cliente</label
+              >
+              <div class="mt-2">
+                <input
+                  id="nombreCliente"
+                  type="text"
+                  [value]="nombreCliente()"
+                  (input)="updateField('nombreCliente', $event)"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="Nombre del cliente"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-6">
+              <label
+                for="contactoCliente"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Información de Contacto</label
+              >
+              <div class="mt-2">
+                <input
+                  id="contactoCliente"
+                  type="text"
+                  [value]="contactoCliente()"
+                  (input)="updateField('contactoCliente', $event)"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="Teléfono, correo, etc."
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Costos Generales -->
+    <div class="border-b mb-4 border-gray-900/10 pb-12">
+      <div class="space-y-12">
+        <div class="border-b border-gray-900/10 pb-12">
+          <h2 class="text-base mb-4 font-semibold leading-7 text-gray-900">
+            Costos Generales
+          </h2>
+
+          <!-- Lista de Actividades -->
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+            <h2 class="text-lg font-semibold text-gray-700 mb-2">
+              Mano de Obra
+            </h2>
+            <ul>
+              <li *ngFor="let actividad of actividades()" class="mb-2">
+                <div class="flex justify-between">
+                  <span
+                    >{{ actividad.nombre }} ({{
+                      actividad.metrosTotales
+                    }}
+                    m²)</span
+                  >
+                  <span>{{ actividad.totalCosto | currency }}</span>
+                </div>
+                <p class="text-sm text-gray-500">
+                  Precio por metro: {{ actividad.precioPorMetro | currency }}
+                </p>
+              </li>
+            </ul>
+            <button
+              (click)="openModal()"
+              class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-2"
+            >
+              Agregar Actividad
+            </button>
+            <div class="flex justify-between font-bold mt-4">
+              <span>Total Mano de Obra:</span>
+              <span>{{ totalManoObra() | currency }}</span>
+            </div>
+          </div>
+
+          <!-- Lista de Materiales -->
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <h2 class="text-lg font-semibold text-gray-700 mb-2">
+              Lista de Materiales
+            </h2>
+            <ul>
+              <li *ngFor="let material of materiales()" class="mb-2">
+                <div class="flex justify-between">
+                  <span>{{ material.nombre }} ({{ material.unidad }})</span>
+                  <span>{{ material.costoTotal | currency }}</span>
+                </div>
+                <p class="text-sm text-gray-500">
+                  Precio por unidad: {{ material.costoUnitario | currency }}
+                </p>
+              </li>
+            </ul>
+            <button
+              (click)="openMaterialModal()"
+              class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-2"
+            >
+              Agregar Material
+            </button>
+            <div class="flex justify-between font-bold mt-4">
+              <span>Total Materiales:</span>
+              <span>{{ totalMateriales() | currency }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen Financiero -->
+    <div class="border-b mb-4 border-gray-900/10 pb-12">
+      <div class="space-y-12">
+        <div class="border-gray-900/10 pb-12">
+          <h2 class="text-base font-semibold leading-7 text-gray-900">
+            Resumen
+          </h2>
+          <p class="mt-1 text-sm leading-6 text-gray-600"></p>
+
+          <div class="space-y-2">
+            <div class="flex justify-between">
+              <span>Subtotal</span>
+              <span>$0.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Impuestos</span>
+              <span>$0.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Descuentos</span>
+              <span>$0.00</span>
+            </div>
+            <div class="flex justify-between font-bold">
+              <span>Total</span>
+              <span>$0.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      *ngIf="isModalOpen"
+      class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50"
+    >
+      <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+        <h3 class="text-lg font-semibold mb-4">Agregar Actividad</h3>
+        <form>
+          <div class="mb-4">
+            <label class="block text-gray-700">Nombre de la Actividad</label>
+            <input
+              type="text"
+              class="w-full p-2 border border-gray-300 rounded"
+              name="nombre"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700">Precio por Metro</label>
+            <input
+              type="number"
+              class="w-full p-2 border border-gray-300 rounded"
+              name="precioMetro"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700">Total de Metros</label>
+            <input
+              type="number"
+              class="w-full p-2 border border-gray-300 rounded"
+              name="totalMetros"
+              required
+            />
+          </div>
+          <div class="flex justify-end">
+            <button
+              type="button"
+              class="bg-gray-500 text-white px-4 py-2 rounded mr-2"
+              (click)="closeModal()"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              Agregar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-2xl">
+    <h1 class="text-2xl font-bold text-center text-gray-800 mb-4">
+      Revisión de Cotización
+    </h1> -->
+
+  <!-- Vista Previa de Cotización -->
+  <!-- <div class="space-y-4 mb-6">
+      <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+        <h2 class="text-lg font-semibold text-gray-700 mb-2">
+          Datos del Proyecto
+        </h2>
+        <p>
+          <strong>Nombre del Proyecto:</strong>
+          {{ "cotizacion.nombreProyecto " }}
+        </p>
+        <p><strong>Ubicación:</strong> {{ "cotizacion.ubicacion " }}</p>
+        <p>
+          <strong>Fecha de Inicio:</strong>
+          {{ "cotizacion.fechaInicio | date" }}
+        </p>
+        <p>
+          <strong>Fecha de Fin Estimada:</strong>
+          {{ "cotizacion.fechaFin | date" }}
+        </p>
+        <p>
+          <strong>Descripción del Proyecto:</strong>
+          {{ "cotizacion.descripcion" }}
+        </p>
+      </div>
+
+      <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+        <h2 class="text-lg font-semibold text-gray-700 mb-2">
+          Datos del Cliente
+        </h2>
+        <p><strong>Nombre del Cliente:</strong> {{ "" }}</p>
+        <p><strong>Información de Contacto:</strong> {{ "" }}</p>
+      </div>
+
+      <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+        <h2 class="text-lg font-semibold text-gray-700 mb-2">
+          Costos Generales
+        </h2>
+        <p><strong>Mano de Obra:</strong> {{ "" }}</p>
+        <p><strong>Materiales:</strong> {{ "" }}</p>
+        <p><strong>Herramientas y Equipos:</strong> {{ "" }}</p>
+        <p><strong>Otros Gastos:</strong> {{ "" }}</p>
+      </div>
+
+      <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+        <h2 class="text-lg font-semibold text-gray-700 mb-2">
+          Resumen Financiero
+        </h2>
+        <div class="space-y-2">
+          <div class="flex justify-between">
+            <span>Subtotal</span>
+            <span>{{ "" }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Impuestos</span>
+            <span>{{ "" }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Descuentos</span>
+            <span>{{ "" }}</span>
+          </div>
+          <div class="flex justify-between font-bold">
+            <span>Total</span>
+            <span>{{ "" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-between">
+      <button
+        class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full"
+      >
+        Editar
+      </button>
+      <button
+        class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full"
+      >
+        Guardar
+      </button>
+      <button
+        class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full"
+      >
+        Enviar
+      </button>
+    </div>
+  </div>
+</div> -->
+</div>
