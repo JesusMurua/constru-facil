@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, Signal, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
@@ -10,23 +10,15 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './landing.component.css'
 })
 export class LandingComponent {
-  obras = signal([
-    { id: 1, nombre: 'Casa en Col. Roma', avance: 75 },
-    { id: 2, nombre: 'Departamento en Polanco', avance: 40 },
-    { id: 3, nombre: 'Oficina en Reforma', avance: 90 },
-  ]);
 
-  tieneObras = computed(() => this.obras().length > 0);
+  isAuthenticated= signal<boolean>(false); // Simulando la autenticación
 
-  constructor(private router: Router) {}
 
-  seleccionarObra(id: number) {
-    // Aquí redirigirías a la vista de detalles de la obra seleccionada.
-    console.log(`Seleccionar obra con id: ${id}`);
+  login() {
+    this.isAuthenticated.set(true);
   }
 
-  crearNuevaCotizacion() {
-    this.router.navigate(['/crear-cotizacion']);
+  logout() {
+    this.isAuthenticated.set(false);
   }
-
 }

@@ -1,0 +1,192 @@
+
+<div class="flex flex-col h-screen">
+  <!-- Encabezado -->
+  <header
+    class="bg-blue-500 text-white py-4 px-6 flex justify-between items-center shadow-md"
+  >
+    <h1 class="text-xl font-bold">ConstruFácil+</h1>
+    <button class="md:hidden">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        />
+      </svg>
+    </button>
+  </header>
+
+  <!-- Barra de Navegación Superior para Pantallas Grandes -->
+  <nav
+    class="hidden md:flex bg-gray-800 text-white py-2 px-6 justify-around items-center"
+  >
+    <a
+      routerLink="/app"
+      class="text-sm flex items-center space-x-2 hover:bg-gray-700 px-4 py-2 rounded-md"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 10h18M5 6h14M4 14h16v6H4z"
+        />
+      </svg>
+      <span>Inicio</span>
+    </a>
+    <a
+      routerLink="/app/crear-cotizacion"
+      class="text-sm flex items-center space-x-2 hover:bg-gray-700 px-4 py-2 rounded-md"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 4v16m8-8H4"
+        />
+      </svg>
+      <span>Cotización</span>
+    </a>
+    <a
+      routerLink="/app/avance"
+      class="text-sm flex items-center space-x-2 hover:bg-gray-700 px-4 py-2 rounded-md"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 4h18v8H3zM4 12h16v8H4z"
+        />
+      </svg>
+      <span>Avances</span>
+    </a>
+    <a
+      class="text-sm flex items-center space-x-2 hover:bg-gray-700 px-4 py-2 rounded-md"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 16h14l-7-7-7 7z"
+        />
+      </svg>
+      <span>Perfil</span>
+    </a>
+  </nav>
+
+  <!-- Contenido Principal -->
+  <main class="flex-grow overflow-y-auto p-4">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Navegación Inferior para Móviles -->
+  <nav
+    class="bg-gray-800 text-white fixed bottom-0 left-0 right-0 flex justify-around items-center py-2 md:hidden"
+  >
+    <a routerLink="/" class="flex flex-col items-center text-sm">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 mb-1"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 10h18M5 6h14M4 14h16v6H4z"
+        />
+      </svg>
+      Inicio
+    </a>
+    <a
+      routerLink="/crear-cotizacion"
+      class="flex flex-col items-center text-sm"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 mb-1"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 4v16m8-8H4"
+        />
+      </svg>
+      Cotización
+    </a>
+    <a routerLink="/avance" class="flex flex-col items-center text-sm">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 mb-1"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 4h18v8H3zM4 12h16v8H4z"
+        />
+      </svg>
+      Avances
+    </a>
+    <a class="flex flex-col items-center text-sm">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 mb-1"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 16h14l-7-7-7 7z"
+        />
+      </svg>
+      Perfil
+    </a>
+  </nav>
+</div>
