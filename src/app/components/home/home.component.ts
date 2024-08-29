@@ -18,6 +18,9 @@ export class HomeComponent {
 
   tieneObras = computed(() => this.obras().length > 0);
 
+  isMenuOpen = false;
+
+
   constructor(private router: Router) {}
 
   seleccionarObra(id: number) {
@@ -27,6 +30,19 @@ export class HomeComponent {
 
   crearNuevaCotizacion() {
     this.router.navigate(['/crear-cotizacion']);
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  isAuthenticated(): boolean {
+    // Tu lógica de autenticación aquí
+    return false;
+  }
+
+  login() {
+    // Tu lógica de inicio de sesión aquí
   }
 
 }

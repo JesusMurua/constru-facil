@@ -1,7 +1,7 @@
 
 <div class="flex flex-col h-screen">
   <!-- Encabezado -->
-  <header
+  <!-- <header
     class="bg-blue-500 text-white py-4 px-6 flex justify-between items-center shadow-md"
   >
     <h1 class="text-xl font-bold">ConstruFácil+</h1>
@@ -21,7 +21,46 @@
         />
       </svg>
     </button>
-  </header>
+  </header> -->
+  <!-- Encabezado -->
+<header class="bg-blue-500 text-white py-4 px-6 flex justify-between items-center shadow-md">
+  <h1 class="text-xl font-bold">ConstruFácil+</h1>
+  <button class="md:hidden" (click)="toggleMenu()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16m-7 6h7"
+      />
+    </svg>
+  </button>
+
+  <!-- Menú desplegable -->
+  <nav [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}" class="fixed top-0 left-0 right-0 bg-blue-500 md:relative md:flex md:space-x-6 mt-16 md:mt-0 md:bg-transparent md:top-0">
+    <a
+      *ngIf="isAuthenticated()"
+      routerLink="/app"
+      class="block text-white py-2 px-4 hover:bg-blue-600 md:hover:bg-transparent"
+    >
+      Ingresar a la App
+    </a>
+    <button
+      *ngIf="!isAuthenticated()"
+      (click)="login()"
+      class="block text-white py-2 px-4 hover:bg-blue-600 md:hover:bg-transparent"
+    >
+      Iniciar Sesión
+    </button>
+  </nav>
+</header>
+
 
   <!-- Barra de Navegación Superior para Pantallas Grandes -->
   <nav
@@ -117,7 +156,7 @@
   <nav
     class="bg-gray-800 text-white fixed bottom-0 left-0 right-0 flex justify-around items-center py-2 md:hidden"
   >
-    <a routerLink="/" class="flex flex-col items-center text-sm">
+    <a routerLink="/app" class="flex flex-col items-center text-sm">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 mb-1"
@@ -135,7 +174,7 @@
       Inicio
     </a>
     <a
-      routerLink="/crear-cotizacion"
+      routerLink="/app/crear-cotizacion"
       class="flex flex-col items-center text-sm"
     >
       <svg
@@ -154,7 +193,7 @@
       </svg>
       Cotización
     </a>
-    <a routerLink="/avance" class="flex flex-col items-center text-sm">
+    <a routerLink="/app/avance" class="flex flex-col items-center text-sm">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 mb-1"
