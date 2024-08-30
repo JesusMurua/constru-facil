@@ -12,7 +12,7 @@ import { Router, RouterModule } from '@angular/router';
 export class LandingComponent {
 
   isAuthenticated= signal<boolean>(false); // Simulando la autenticación
-
+  isMenuOpen = false;
 
   login() {
     this.isAuthenticated.set(true);
@@ -20,5 +20,9 @@ export class LandingComponent {
 
   logout() {
     this.isAuthenticated.set(false);
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

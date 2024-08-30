@@ -1,91 +1,48 @@
 <!-- Encabezado -->
-<!-- <header class="bg-blue-500 text-white py-4 shadow-md">
+<header class="bg-blue-500 text-white py-4 shadow-md relative z-50">
   <div class="max-w-6xl mx-auto flex justify-between items-center px-6">
     <h1 class="text-2xl font-bold">ConstruFácil+</h1>
+
+    <!-- Botón de menú móvil (Hamburguesa) -->
+    <div class="flex md:hidden">
+      <button
+        (click)="isMenuOpen = !isMenuOpen"
+        class="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-blue-600 focus:outline-none"
+      >
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menú de navegación -->
     <nav class="hidden md:flex space-x-6">
       <a href="#features" class="hover:text-gray-300">Características</a>
       <a href="#testimonials" class="hover:text-gray-300">Testimonios</a>
       <a href="#cta" class="hover:text-gray-300">Únete Ahora</a>
     </nav>
-    <a
-      href="#cta"
-      class="bg-white text-blue-500 py-2 px-4 rounded-full font-bold hover:bg-gray-100"
-      >Regístrate Gratis</a
-    >
 
-
-    <a
-      *ngIf="isAuthenticated()"
-      routerLink="/app"
-      class="bg-white text-blue-500 py-2 px-4 rounded-full font-bold hover:bg-gray-100"
-      >Ingresar a la App</a
-    >
-    <button *ngIf="!isAuthenticated()" (click)="login()" class="bg-white text-blue-500 py-2 px-4 rounded-full font-bold hover:bg-gray-100">
-      Iniciar Sesión
-    </button>
-
-
-    <button class="md:hidden">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16m-7 6h7"
-        />
-      </svg>
-    </button>
-  </div>
-</header> -->
-<!-- Encabezado -->
-<header class="bg-blue-500 text-white py-4 shadow-md">
-  <div class="max-w-6xl mx-auto flex items-center justify-between px-6">
-    <h1 class="text-2xl font-bold">ConstruFácil+</h1>
-    <div class="flex items-center">
-      <button class="md:hidden">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16m-7 6h7"
-          />
-        </svg>
-      </button>
-      <nav class="hidden md:flex space-x-6 ml-6">
-        <a href="#features" class="hover:text-gray-300">Características</a>
-        <a href="#testimonials" class="hover:text-gray-300">Testimonios</a>
-        <a href="#cta" class="hover:text-gray-300">Únete Ahora</a>
-      </nav>
-    </div>
-    <div class="hidden md:flex space-x-4 ml-6">
-      <a
-        *ngIf="isAuthenticated()"
-        routerLink="/app"
-        class="bg-white text-blue-500 py-2 px-4 rounded-full font-bold hover:bg-gray-100"
-      >
-        Ingresar a la App
-      </a>
-      <button
-        *ngIf="!isAuthenticated()"
-        (click)="login()"
-        class="bg-white text-blue-500 py-2 px-4 rounded-full font-bold hover:bg-gray-100"
-      >
+    <!-- Botones de autenticación -->
+    <div class="hidden md:flex space-x-4">
+      <a *ngIf="isAuthenticated()" routerLink="/app" class="bg-white text-blue-500 py-2 px-4 rounded-full font-bold hover:bg-gray-100">Ingresar a la App</a>
+      <button *ngIf="!isAuthenticated()" (click)="login()" class="bg-white text-blue-500 py-2 px-4 rounded-full font-bold hover:bg-gray-100">
         Iniciar Sesión
       </button>
     </div>
+  </div>
+
+  <!-- Menú móvil desplegable -->
+  <div *ngIf="isMenuOpen" class="md:hidden absolute top-14 inset-x-0 bg-blue-500 text-white shadow-lg">
+    <nav class="space-y-1 px-4 py-4">
+      <a href="#features" class="block text-white py-2 px-3 rounded-md hover:bg-blue-600">Características</a>
+      <a href="#testimonials" class="block text-white py-2 px-3 rounded-md hover:bg-blue-600">Testimonios</a>
+      <a href="#cta" class="block text-white py-2 px-3 rounded-md hover:bg-blue-600">Únete Ahora</a>
+
+      <a *ngIf="isAuthenticated()" routerLink="/app" class="block bg-white text-blue-500 py-2 px-3 rounded-md font-bold hover:bg-gray-100 mt-2">Ingresar a la App</a>
+      <button *ngIf="!isAuthenticated()" (click)="login()" class="block bg-white text-blue-500 py-2 px-3 rounded-md font-bold hover:bg-gray-100 mt-2">
+        Iniciar Sesión
+      </button>
+    </nav>
   </div>
 </header>
 

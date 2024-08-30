@@ -18,6 +18,8 @@ export class DashboardComponent {
 
   tieneObras = computed(() => this.obras().length > 0);
 
+
+
   constructor(private router: Router) {}
 
   seleccionarObra(id: number) {
@@ -28,4 +30,8 @@ export class DashboardComponent {
   crearNuevaCotizacion() {
     this.router.navigate(['/crear-cotizacion']);
   }
+
+
+
+
 }
