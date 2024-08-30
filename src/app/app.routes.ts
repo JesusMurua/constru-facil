@@ -21,7 +21,21 @@ export const routes: Routes = [
         pathMatch: 'full'  // Asegura que se muestre DashboardComponent por defecto
       },
       {
-        path: 'crear-cotizacion',
+        path: 'cotizaciones',
+        loadComponent: () =>
+          import('./components/cotizacion-list/cotizacion-list.component').then(
+            (c) => c.CotizacionListComponent
+          ),
+      },
+      {
+        path: 'cotizacion',
+        loadComponent: () =>
+          import('./components/cotizacion/cotizacion.component').then(
+            (c) => c.CotizacionComponent
+          ),
+      },
+      {
+        path: 'cotizacion/:id',
         loadComponent: () =>
           import('./components/cotizacion/cotizacion.component').then(
             (c) => c.CotizacionComponent
@@ -29,6 +43,13 @@ export const routes: Routes = [
       },
       {
         path: 'avance',
+        loadComponent: () =>
+          import('./components/avance/avance.component').then(
+            (c) => c.AvanceComponent
+          ),
+      },
+      {
+        path: 'avance/:id',
         loadComponent: () =>
           import('./components/avance/avance.component').then(
             (c) => c.AvanceComponent

@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -25,6 +25,7 @@ export class DashboardComponent {
   seleccionarObra(id: number) {
     // Aquí redirigirías a la vista de detalles de la obra seleccionada.
     console.log(`Seleccionar obra con id: ${id}`);
+    this.router.navigate(['/app/avance', id]);
   }
 
   crearNuevaCotizacion() {

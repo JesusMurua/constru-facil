@@ -43,7 +43,7 @@ export class AvanceComponent {
         id: 1,
         nombre: 'Levantar Barda',
         metrosTotales: 100,
-        metrosAvanzados: 0,
+        metrosAvanzados: 50,
         expanded: true
       },
       { id: 2, nombre: 'Cimentación', metrosTotales: 50, metrosAvanzados: 0, expanded: true },
@@ -84,7 +84,7 @@ export class AvanceComponent {
     }
   }
 
-  expanded: WritableSignal<boolean[]> = signal([false, false]); // Inicializa con `false` para cada actividad
+  expanded: WritableSignal<boolean[]> = signal([false, false]);
 
   toggleActividad(index: number): void {
     this.expanded.update((currentExpanded) => {
@@ -92,5 +92,25 @@ export class AvanceComponent {
       newExpanded[index] = !newExpanded[index];
       return newExpanded;
     });
+  }
+
+  calcularPorcentajeTotal(): number {
+    let totalMetros = 0;
+    let totalAvanzado = 0;
+
+    // Obtén el valor actual de la señal
+    const actividadesActuales = this.actividades();
+
+    actividadesActuales.forEach(actividad => {
+      totalMetros += actividad.metrosTotales;
+      totalAvanzado += actividad.metrosAvanzados;
+    });
+
+    return 75//totalMetros === 0 ? 0 : Math.round((totalAvanzado / totalMetros) * 100);
+  }
+
+  getStrokeDasharray(): string {
+    const porcentaje = this.calcularPorcentajeTotal();
+    return `${porcentaje} ${100 - porcentaje}`;
   }
 }
